@@ -1,0 +1,18 @@
+import itertools
+
+def find_combinations(digits):
+    # Generate all permutations of the digits
+    permutations = itertools.permutations(digits)
+    
+    # Convert permutations to a list of strings
+    permutations_list = [''.join(p) for p in permutations]
+    
+    # Print each permutation
+    for perm in permutations_list:
+        print(perm)
+
+# Sample Input
+input_digits = "123"
+
+# Find and print all combinations
+find_combinations(input_digits)
