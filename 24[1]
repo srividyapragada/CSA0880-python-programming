@@ -1,0 +1,37 @@
+def add_binary(a, b):
+    max_len = max(len(a), len(b))
+    
+    # Padding the shorter string with leading zeros
+    a = a.zfill(max_len)
+    b = b.zfill(max_len)
+    
+    result = []
+    carry = 0
+    
+    for i in range(max_len - 1, -1, -1):
+        bit_a = int(a[i])
+        bit_b = int(b[i])
+        
+        # Calculate the sum and carry
+        total = bit_a + bit_b + carry
+        carry = total // 2
+        result.append(str(total % 2))
+    
+    # If there's any carry left, add it to the result
+    if carry:
+        result.append('1')
+    
+    # The result is currently in reverse order
+    return ''.join(result[::-1])
+
+# Test cases
+print(add_binary("11", "1"))       # Output: "100"
+print(add_binary("1010", "1011"))  # Output: "10101"
+print(add_binary("1111", "1010"))  # Output: "11001"
+print(add_binary("101101", "1100"))# Output: "111001"
+
+# The last test case contains invalid binary strings
+try:
+    print(add_binary("15", "45"))
+except ValueError:
+    print("Invalid binary input")
