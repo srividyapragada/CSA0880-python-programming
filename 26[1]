@@ -1,0 +1,22 @@
+def find_mirror_image(input_str):
+    # Filter out non-digit characters
+    digits_only = ''.join(filter(str.isdigit, input_str))
+    
+    if not digits_only:
+        return "No digits to form a mirror image"
+    
+    # Reverse the filtered digits
+    reversed_digits = digits_only[::-1]
+    
+    # Check if the reversed string is a mirror image
+    if reversed_digits == digits_only:
+        return f"Mirror image: {reversed_digits}"
+    else:
+        return f"Mirror image: {reversed_digits}"
+
+# Test cases
+print(find_mirror_image("Sell123"))     # Output: Mirror image: 321
+print(find_mirror_image("5489236"))     # Output: Mirror image: 6329845
+print(find_mirror_image("Abc-abc"))     # Output: No digits to form a mirror image
+print(find_mirror_image("%$$$$^&"))     # Output: No digits to form a mirror image
+print(find_mirror_image("-123456"))     # Output: Mirror image: 654321
