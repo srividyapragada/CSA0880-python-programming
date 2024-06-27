@@ -1,0 +1,13 @@
+def length_of_last_word(s):
+    # Strip leading and trailing whitespace, then split by spaces
+    words = s.strip().split()
+    
+    # Return the length of the last word
+    return len(words[-1]) if words else 0
+
+# Test cases
+print(length_of_last_word("Hello World"))            # Output: 5
+print(length_of_last_word(" fly me to the moon "))   # Output: 4
+print(length_of_last_word("luffy is still joyboy"))  # Output: 6
+print(length_of_last_word("123"))                    # Output: 3
+print(length_of_last_word(" 45&29 8*6^4"))           # Output: 5
