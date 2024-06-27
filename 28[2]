@@ -1,0 +1,28 @@
+from collections import defaultdict
+
+def groupAnagrams(strs):
+    # Dictionary to store grouped anagrams
+    anagrams_dict = defaultdict(list)
+    
+    # Iterate through each string in strs
+    for s in strs:
+        # Sort the string to use as a key in the dictionary
+        sorted_s = ''.join(sorted(s))
+        
+        # Add the original string to the corresponding list in the dictionary
+        anagrams_dict[sorted_s].append(s)
+    
+    # Convert the values of the dictionary to the final result format
+    result = list(anagrams_dict.values())
+    
+    return result
+
+# Test cases
+print(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))
+# Output: [["eat","tea","ate"],["tan","nat"],["bat"]]
+
+print(groupAnagrams([""]))
+# Output: [[""]]
+
+print(groupAnagrams(["a"]))
+# Output: [["a"]]
