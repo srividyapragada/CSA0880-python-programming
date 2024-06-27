@@ -1,0 +1,38 @@
+def shuffle(l1, l2):
+    shuffled_list = []
+    min_len = min(len(l1), len(l2))
+    
+    for i in range(min_len):
+        shuffled_list.append(l1[i])
+        shuffled_list.append(l2[i])
+    
+    # Append remaining elements of the longer list
+    if len(l1) > len(l2):
+        shuffled_list.extend(l1[min_len:])
+    elif len(l2) > len(l1):
+        shuffled_list.extend(l2[min_len:])
+    
+    return shuffled_list
+
+# Example usage
+def main():
+    # Input for l1
+    n1 = int(input("Enter the number of elements of l1: "))
+    l1 = []
+    for i in range(n1):
+        elem = int(input("Enter the element: "))
+        l1.append(elem)
+    
+    # Input for l2
+    n2 = int(input("Enter the number of elements of l2: "))
+    l2 = []
+    for i in range(n2):
+        elem = int(input("Enter the element: "))
+        l2.append(elem)
+    
+    # Shuffle lists
+    shuffled = shuffle(l1, l2)
+    print(f"Shuffled list={shuffled}")
+
+if __name__ == "__main__":
+    main()
