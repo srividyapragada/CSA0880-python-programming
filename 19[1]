@@ -1,0 +1,30 @@
+def get_season(month, day):
+    month_to_number = {
+        "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+        "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
+    }
+    
+    # Convert the input month to its corresponding numeric value
+    month_num = month_to_number[month]
+    
+    # Determine the season based on the month and day
+    if (month_num == 3 and day >= 20) or (4 <= month_num <= 5) or (month_num == 6 and day < 21):
+        season = "Spring"
+    elif (month_num == 6 and day >= 21) or (7 <= month_num <= 8) or (month_num == 9 and day < 22):
+        season = "Summer"
+    elif (month_num == 9 and day >= 22) or (10 <= month_num <= 11) or (month_num == 12 and day < 21):
+        season = "Fall"
+    else:
+        season = "Winter"
+    
+    return season
+
+# Get user input
+month = input("Enter the month (First three letters with first letter capital, e.g., Jan, Feb): ")
+day = int(input("Enter the date: "))
+
+# Determine the season
+season = get_season(month, day)
+
+# Output the result
+print(f"The season is currently {season}.")
