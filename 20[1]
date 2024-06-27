@@ -1,0 +1,30 @@
+def remove_common_words(S1, S2):
+    # Split the sentences into words
+    words1 = set(S1.split())
+    words2 = set(S2.split())
+    
+    # Find common words
+    common_words = words1.intersection(words2)
+    
+    # Remove common words from both sets
+    unique_words1 = [word for word in S1.split() if word not in common_words]
+    unique_words2 = [word for word in S2.split() if word not in common_words]
+    
+    # Join the remaining words back into strings
+    result1 = ' '.join(unique_words1)
+    result2 = ' '.join(unique_words2)
+    
+    return result1, result2
+
+# Test cases
+S1 = "sky is blue in color"
+S2 = "Raj likes sky blue color"
+
+output1, output2 = remove_common_words(S1, S2)
+print(f"Output: \n{output1}\n{output2}")
+
+# Additional test case
+S1 = "the cat in the hat"
+S2 = "hat in the bag"
+output1, output2 = remove_common_words(S1, S2)
+print(f"Output: \n{output1}\n{output2}")
