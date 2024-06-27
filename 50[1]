@@ -1,0 +1,18 @@
+def reverseWords(s):
+    # Remove leading and trailing spaces
+    s = s.strip()
+    
+    # Split the string into words based on spaces
+    words = s.split()
+    
+    # Reverse the list of words
+    reversed_words = words[::-1]
+    
+    # Join the reversed words with a single space
+    reversed_string = " ".join(reversed_words)
+    
+    return reversed_string
+
+# Test cases
+print(reverseWords("the sky is blue"))  # Output: "blue is sky the"
+print(reverseWords(" hello world "))    # Output: "world hello"
