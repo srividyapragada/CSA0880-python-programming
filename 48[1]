@@ -1,0 +1,54 @@
+def is_valid_board(board):
+    n = len(board)
+    
+    # Check row patterns
+    for i in range(n):
+        for j in range(n - 1):
+            if board[i][j] == board[i][j + 1]:
+                return False
+    
+    # Check column patterns
+    for j in range(n):
+        for i in range(n - 1):
+            if board[i][j] == board[i + 1][j]:
+                return False
+    
+    return True
+
+def count_mismatches(board, pattern_start):
+    n = len(board)
+    mismatches = 0
+    
+    for i in range(n):
+        for j in range(n):
+            expected = (pattern_start + i + j) % 2
+            if board[i][j] != expected:
+                mismatches += 1
+    
+    return mismatches
+
+def min_swaps_to_chessboard(board):
+    n = len(board)
+    
+    # Step 1: Check if the board can potentially be a chessboard
+    if not is_valid_board(board):
+        return -1
+    
+    # Step 2: Count mismatches for two possible starting patterns (0 and 1)
+    mismatch_start0 = count_mismatches(board, 0)
+    mismatch_start1 = count_mismatches(board, 1)
+    
+    # Step 3: Check if it's possible to transform into a chessboard
+    if mismatch_start0 % 2 != 0 or mismatch_start1 % 2 != 0:
+        return -1
+    
+    # Calculate minimum swaps needed
+    swaps_start0 = mismatch_start0 // 2
+    swaps_start1 = mismatch_start1 // 2
+    
+    return min(swaps_start0, swaps_start1)
+
+# Test cases
+print(min_swaps_to_chessboard([[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]))  # Output: 2
+print(min_swaps_to_chessboard([[0,1],[1,0]]))  # Output: 0
+print(min_swaps_to_chessboard([[1,0],[1,0]]))  # Output: -1
