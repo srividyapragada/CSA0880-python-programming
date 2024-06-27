@@ -1,0 +1,23 @@
+def num_squares(n):
+    # Initialize a dp array to store the minimum number of perfect squares that sum up to each number
+    dp = [0] * (n + 1)
+    
+    # Iterate from 1 to n
+    for i in range(1, n + 1):
+        # Start with the worst case scenario, which is summing up i number of 1's (i perfect squares of 1)
+        dp[i] = i
+        
+        # Check for every j*j <= i
+        j = 1
+        while j * j <= i:
+            dp[i] = min(dp[i], dp[i - j*j] + 1)
+            j += 1
+    
+    return dp[n]
+
+# Test cases
+print(num_squares(12))  # Output: 3
+print(num_squares(13))  # Output: 2
+print(num_squares(1))   # Output: 1
+print(num_squares(4))   # Output: 2
+print(num_squares(3))   # Output: 3
