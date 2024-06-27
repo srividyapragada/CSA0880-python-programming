@@ -1,0 +1,15 @@
+import re
+
+def is_palindrome(s):
+    # Convert the string to lowercase and remove non-alphanumeric characters
+    cleaned_s = re.sub(r'[^a-zA-Z0-9]', '', s.lower())
+    
+    # Check if the cleaned string is the same forwards and backwards
+    return cleaned_s == cleaned_s[::-1]
+
+# Test cases
+print(is_palindrome("A man, a plan, a canal: Panama"))  # Output: true
+print(is_palindrome("race a car"))                      # Output: false
+print(is_palindrome(" "))                               # Output: true
+print(is_palindrome("madam"))                           # Output: true
+print(is_palindrome("honest"))                          # Output: false
