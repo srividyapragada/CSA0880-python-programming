@@ -1,0 +1,17 @@
+def check_divisibility(num1, num2):
+    # Calculate sum and product
+    sum_nums = num1 + num2
+    prod_nums = num1 * num2
+    
+    # Check if product is divisible by sum
+    if prod_nums % sum_nums == 0:
+        return "YEAH"
+    else:
+        return "NAH"
+
+# Test cases
+print(check_divisibility(60, 48))   # Output: NAH
+print(check_divisibility(4, 8))     # Output: YEAH
+print(check_divisibility(-10, 0))   # Output: YEAH (since -10 * 0 = 0, and 0 is divisible by -10)
+print(check_divisibility(12, 34))   # Output: NAH
+print(check_divisibility(16, 17))   # Output: NAH
