@@ -1,0 +1,16 @@
+def delchar(s, c):
+    if len(c) != 1:
+        return s
+    return s.replace(c, '')
+
+# Sample input
+input_string = "Hello world"
+char_to_delete = "l"
+print(f"String after the character is removed: {delchar(input_string, char_to_delete)}")  # Output: Heo word
+
+# Test cases
+print(delchar("Good evening", "o"))    # Output: Gd evening
+print(delchar("Take care", "a"))       # Output: Tke cre
+print(delchar("123456s", "1"))         # Output: 23456s
+print(delchar("Red rose", "r"))        # Output: Red ose
+print(delchar("Flower", "e"))          # Output: Flowr
