@@ -1,0 +1,34 @@
+from collections import Counter
+
+def longest_substring(s, k):
+    if not s or k > len(s):
+        return 0
+    
+    # Step 1: Count frequencies of each character
+    freq = Counter(s)
+    
+    # Step 2: Find characters with frequency less than k
+    invalid_chars = set([char for char in freq if freq[char] < k])
+    
+    if not invalid_chars:  # If no characters are invalid, whole string is valid
+        return len(s)
+    
+    # Step 3: Split the string by invalid characters and recursively find the max length
+    max_length = 0
+    start = 0
+    for end in range(len(s)):
+        if s[end] in invalid_chars:
+            max_length = max(max_length, longest_substring(s[start:end], k))
+            start = end + 1
+    
+    # Need to check the last segment of the string
+    max_length = max(max_length, longest_substring(s[start:], k))
+    
+    return max_length
+
+# Test cases
+print(longest_substring("aaabb", 3))   # Output: 3
+print(longest_substring("ababbc", 2))  # Output: 5
+print(longest_substring("ababab", 3))  # Output: 0
+print(longest_substring("xyzxyz", 2))  # Output: 6
+print(longest_substring("12345", 0))   # Output: 5
